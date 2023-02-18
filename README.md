@@ -24,7 +24,7 @@ To be continued
 ## 致谢：
 
  - [USTC Hackergame 2022](https://hack.lug.ustc.edu.cn/) *今年只要nbfls不恶心到单休就来hackergame 2023!*
- - [猫猫(欠陥電気) @Misaka13514](https//blog.atri.tk/) *猫猫您！速通chi小红包*
+ - [猫猫(欠陥電気) @Misaka13514](https://blog.atri.tk/) *猫猫您！速通chi小红包*
  - [Ray(@so1ve)](https://blog.mk1.io/) *谢谢so1ve大大帮忙发小软文推广！*
  - 以及来玩的各位小伙伴们
 
