@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>chiの小签到</title>
+    <meta charset="utf8"/>
+    <style>
+      #title {
+        font-size: 32px;
+        text-align: center;
+      }
+      #click0 {
+        position: fixed;
+        left: 50%;
+      }
+      #senpai2o23 {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+      html {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        height: calc(100% - 2em)
+      }
+      html,body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">chiの小签到题&nbsp;<small>十分简单的签到~</small></h1>
+    <div id="click0" style="cursor: pointer;">点 我 签 到</div>
+    <canvas id="senpai2o23"></canvas>
+  </body>
+  <script>
+  function main () {
+      let count = 0
+      let all = 0
+      const textStr = '[[229,145,138],[232,175,137],[228,189,160],[229,147,166],[239,188,140],[231,172,172],[228,184,128],[228,184,170],[231,186,162],[229,140,133],[231,154,132],[229,175,134],[231,160,129],[230,152,175],[226,128,156],[50],[48],[50],[51],[230,150,176],[229,185,180],[229,191,171],[228,185,144],[226,128,157],[239,188,129]]'
+      const nexTUrL = 'aHR0cHM6Ly9yYi5jaGlodW8yMTA0LmRldi85NTc1NTY2ZWY1OTMzYWVlODdjZTE1MjhhYjhkNTNhNDBkNDc5MDgxNDA1ZWM1MmMyZTVjMjMwNjE5YzNiYjQ3YjU2YmVjNGUwYjQ0NjkyM2ExNWQ3MzI3OWU2NDUyMzczZmVmNTJhZTM2ZGRkMzU0MDQ4ODIyMjAzYmI1N2Q2My8='
+      const textArray = JSON.parse(textStr)
+      document.getElementById('click0').onclick = () => {
+        const ys = Math.random()
+        all += 1
+        document.getElementById('click0').style["left"] = Math.round(((Math.random() * document.body.clientWidth) > 50)? (Math.random() * document.body.clientWidth) - 50: (Math.random() * document.body.clientWidth)) + 'px'
+        document.getElementById('click0').style["top"] = Math.round(((Math.random() * document.body.clientHeight) > 50)? (Math.random() * document.body.clientHeight) - 50: (Math.random() * document.body.clientHeight)) + 'px'
+        const senpai2o23 = document.getElementById('senpai2o23')
+        senpai2o23.width = document.body.clientWidth
+        senpai2o23.height = document.body.clientHeight
+        const senpaidraw = senpai2o23.getContext('2d')
+        if (ys <= 0.1) {
+          const buff = new Uint8Array(textArray[count])
+          const decode = new TextDecoder()
+          const text = decode.decode(buff)
+          // senpaidraw.fillColor = ''
+          senpaidraw.font = "36px serif"
+          const w = Math.round(Math.random() * senpai2o23.clientWidth)
+          const h = Math.round(Math.random() * senpai2o23.clientHeight)
+          // console.log(w,h)
+          senpaidraw.fillText(text, w, h)
+          count += 1
+        }
+        if (count === 24) {
+          let alltext = ''
+          textArray.forEach(element => {
+            const buff = new Uint8Array(element)
+            const decode = new TextDecoder()
+            const text = decode.decode(buff)
+            alltext += text
+          })
+          alert('恭喜你！第一关通过啦！canvas显示的原文是：' + alltext + '”！')
+          alert('第二关的地址是：' + atob(nexTUrL) + '，你一共尝试了' + all + '次')
+          window.close()
+        }
+      }    
+  }
+  main()
+  </script>
+</html>
